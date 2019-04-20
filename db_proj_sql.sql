@@ -57,13 +57,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`event` (
   CONSTRAINT `fk_event_venue1`
     FOREIGN KEY (`venue_id`)
     REFERENCES `mydb`.`venue` (`venue_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_event_performer1`
     FOREIGN KEY (`performer_name`)
     REFERENCES `mydb`.`performer` (`performer_name`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`member` (
   CONSTRAINT `fk_member_membership_status`
     FOREIGN KEY (`membership_status_name`)
     REFERENCES `mydb`.`membership_status` (`membership_status_name`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
@@ -142,28 +142,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`ticket` (
   CONSTRAINT `fk_ticket_ticket_class1`
     FOREIGN KEY (`ticket_class_name`)
     REFERENCES `mydb`.`ticket_class` (`ticket_class_name`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_ticket_add_on1`
     FOREIGN KEY (`add_on_code`)
     REFERENCES `mydb`.`add_on` (`addon_code`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_ticket_member1`
     FOREIGN KEY (`member_id`)
     REFERENCES `mydb`.`member` (`member_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_ticket_event1`
     FOREIGN KEY (`event_id`)
     REFERENCES `mydb`.`event` (`event_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_ticket_venue1`
     FOREIGN KEY (`venue_id`)
     REFERENCES `mydb`.`event` (`venue_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
