@@ -1,0 +1,1 @@
+This is a MySQL database project which describes the function of an event ticket sales company.
